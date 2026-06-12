@@ -8,19 +8,107 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.login-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 20% 15%, rgb(255 255 255 / 18%), transparent 32%),
+    radial-gradient(circle at 85% 85%, rgb(20 52 164 / 35%), transparent 35%),
+    linear-gradient(135deg, #4169e1 0%, #2746b3 100%);
+}
+
+.login-card {
+  display: flex;
+  width: min(100%, 420px);
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 52px 44px;
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgb(12 31 99 / 32%);
+}
+
+.login-card h1 {
+  margin: 0;
+  color: #17245c;
+  font-size: clamp(2rem, 7vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.google-login-button {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border: 1px solid #d7dbe7;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #26304b;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgb(23 36 92 / 8%);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.google-login-button:hover:not(:disabled) {
+  border-color: #4169e1;
+  box-shadow: 0 8px 20px rgb(65 105 225 / 16%);
+  transform: translateY(-1px);
+}
+
+.google-login-button:focus-visible {
+  outline: 3px solid rgb(65 105 225 / 35%);
+  outline-offset: 3px;
+}
+
+.google-login-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.login-error {
+  margin: -10px 0 0;
+  color: #b42318;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 44px 24px;
+  }
 }
